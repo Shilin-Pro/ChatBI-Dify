@@ -1,0 +1,7 @@
+# 本项目所有脚本都只用 Python 标准库，无需安装任何依赖
+# （demo_server.py / call_dify_api.py / tests/*.py 均使用 urllib / json / subprocess）
+#
+# Python 3.8+ 即可运行。
+#
+# 如需额外工具可自行添加，例如：
+# requests>=2.31

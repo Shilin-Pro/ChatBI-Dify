@@ -1,0 +1,30 @@
+# 环境变量（绝不提交）
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 临时文件
+_import*/
+*.log
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 数据库导出（含真实数据时不要提交）
+*.dump
+*.sql.gz
+
+# 临时提交信息
+_commit_msg.txt
