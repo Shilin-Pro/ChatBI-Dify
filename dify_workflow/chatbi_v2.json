@@ -1,0 +1,992 @@
+{
+  "nodes": [
+    {
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "id": "1794397461019",
+      "positionAbsolute": {
+        "x": -819.0465198969441,
+        "y": 96.18738844313528
+      },
+      "data": {
+        "type": "start",
+        "title": "User Input",
+        "variables": [
+          {
+            "variable": "text",
+            "required": true,
+            "hint": "",
+            "label": "text",
+            "type": "text-input",
+            "options": [],
+            "placeholder": "",
+            "default": ""
+          }
+        ],
+        "selected": false
+      },
+      "position": {
+        "y": 96.18738844313528,
+        "x": -819.0465198969441
+      },
+      "type": "custom",
+      "height": 108,
+      "selected": false,
+      "width": 242
+    },
+    {
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "id": "1794397495698",
+      "positionAbsolute": {
+        "x": -329.1308853050531,
+        "y": 112.52328258438745
+      },
+      "data": {
+        "prompt_template": [
+          {
+            "role": "system",
+            "text": "你是一个极其严谨的 MySQL 8.0 数据查询专家。请将用户的自然语言需求转换为纯文本 SELECT 语句。\n\n# 用户需求\n{{#1794397461019.text#}}\n\n# 数据库表结构信息\n{{#context#}}\n\n# 🚨 核心生成红线（必须严格遵守）\n1. **纯文本输出**：只能输出单条 SQL，绝对禁止使用 ```sql 等 Markdown 标记！绝对禁止在末尾加分号 `;`！\n2. **字段约束**：只能使用上面【表结构】中提供的真实表名和字段，绝不允许瞎编数据库中不存在的表或字段（严禁跨方言瞎写）。\n3. **时间过滤**：绝对禁止使用 `YEAR()` 或 `MONTH()` 函数，必须使用范围查询（如 `order_date >= '2024-03-01' AND order_date < '2024-04-01'`）。\n4. **业务口径**：统计营收/销量时，必须过滤 `status = '已完成'`。算商品销售额，必须用 `SUM(order_items.subtotal)`，绝不能用 `SUM(orders.pay_amount)`（防止金额重复累加）。\n\n",
+            "id": "35162b52-2de4-4385-b16c-61b8cc03adae"
+          },
+          {
+            "role": "user",
+            "text": "",
+            "id": "e476c8b0-981e-4cb5-817a-35999f31f9d7"
+          }
+        ],
+        "context": {
+          "enabled": true,
+          "variable_selector": [
+            "1794720006207",
+            "result"
+          ]
+        },
+        "title": "LLM",
+        "model_selector": null,
+        "type": "llm",
+        "vision": {
+          "enabled": false
+        },
+        "model": {
+          "name": "deepseek-ai/DeepSeek-V3",
+          "provider": "langgenius/siliconflow/siliconflow",
+          "completion_params": {
+            "temperature": 0
+          },
+          "mode": "chat"
+        },
+        "selected": false
+      },
+      "position": {
+        "y": 112.52328258438745,
+        "x": -329.1308853050531
+      },
+      "type": "custom",
+      "height": 87,
+      "selected": true,
+      "width": 241
+    },
+    {
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "id": "1794397754827",
+      "positionAbsolute": {
+        "x": -89.96059568893656,
+        "y": 393.78920894452824
+      },
+      "data": {
+        "tool_node_version": "2",
+        "tool_configurations": {
+          "output_format": {
+            "value": "markdown",
+            "type": "constant"
+          }
+        },
+        "provider_icon": "http://127.0.0.1:5001/console/api/workspaces/current/plugin/icon?tenant_id=b81039af-4dc0-4ebd-aa4c-59ad77019453&filename=ce2ce5af47e39e9476fc06eea7fbd05446ad16043d4d16c671e69a3c650a976a.svg",
+        "provider_show_name": "Database Query",
+        "params": {
+          "db_port": "",
+          "db_username": "",
+          "db_name": "",
+          "db_type": "",
+          "query_sql": "",
+          "output_format": "",
+          "db_password": "",
+          "db_properties": "",
+          "db_host": ""
+        },
+        "tool_description": "A tool for Database SQL query.",
+        "default_value": [
+          {
+            "value": "【系统提示：SQL 执行失败，找不到对应的数据表或字段。】",
+            "type": "string",
+            "key": "text"
+          },
+          {
+            "value": "[]",
+            "type": "array[object]",
+            "key": "json"
+          }
+        ],
+        "provider_name": "junjiem/db_query/db_query",
+        "tool_name": "sql_query",
+        "tool_parameters": {
+          "db_port": {
+            "value": null,
+            "type": "constant"
+          },
+          "db_username": {
+            "value": "***REDACTED***",
+            "type": "mixed"
+          },
+          "db_name": {
+            "value": "***REDACTED***",
+            "type": "mixed"
+          },
+          "db_type": {
+            "value": "mysql",
+            "type": "constant"
+          },
+          "query_sql": {
+            "value": "{{#1794397495698.text#}}",
+            "type": "mixed"
+          },
+          "db_password": {
+            "value": "***REDACTED***",
+            "type": "mixed"
+          },
+          "db_properties": {
+            "value": null,
+            "type": "mixed"
+          },
+          "db_host": {
+            "value": "***REDACTED***",
+            "type": "mixed"
+          }
+        },
+        "is_team_authorization": true,
+        "meta": null,
+        "plugin_unique_identifier": "junjiem/db_query:0.0.11@2eae0951f13c4e8daa099310d706c9502c349236bca81fcc996f2aea9524c97c",
+        "provider_type": "builtin",
+        "error_strategy": "default-value",
+        "provider_id": "junjiem/db_query/db_query",
+        "paramSchemas": [
+          {
+            "llm_description": "",
+            "human_description": {
+              "ja_JP": "Used for selecting the database type, mysql, oracle, oracle11g, postgresql or mssql.",
+              "en_US": "Used for selecting the database type, mysql, oracle, oracle11g, postgresql or mssql.",
+              "pt_BR": "Used for selecting the database type, mysql, oracle, oracle11g, postgresql or mssql.",
+              "zh_Hans": "用于选择数据库类型，mysql、oracle、oracle11g、postgresql或mssql。"
+            },
+            "form": "llm",
+            "multiple": false,
+            "template": null,
+            "scope": null,
+            "name": "db_type",
+            "label": {
+              "ja_JP": "Database type",
+              "en_US": "Database type",
+              "pt_BR": "Database type",
+              "zh_Hans": "数据库类型"
+            },
+            "placeholder": null,
+            "options": [
+              {
+                "value": "mysql",
+                "label": {
+                  "ja_JP": "MySQL",
+                  "en_US": "MySQL",
+                  "pt_BR": "MySQL",
+                  "zh_Hans": "MySQL"
+                },
+                "icon": ""
+              },
+              {
+                "value": "oracle",
+                "label": {
+                  "ja_JP": "Oracle",
+                  "en_US": "Oracle",
+                  "pt_BR": "Oracle",
+                  "zh_Hans": "Oracle"
+                },
+                "icon": ""
+              },
+              {
+                "value": "oracle11g",
+                "label": {
+                  "ja_JP": "Oracle11g",
+                  "en_US": "Oracle11g",
+                  "pt_BR": "Oracle11g",
+                  "zh_Hans": "Oracle11g"
+                },
+                "icon": ""
+              },
+              {
+                "value": "postgresql",
+                "label": {
+                  "ja_JP": "PostgreSQL",
+                  "en_US": "PostgreSQL",
+                  "pt_BR": "PostgreSQL",
+                  "zh_Hans": "PostgreSQL"
+                },
+                "icon": ""
+              },
+              {
+                "value": "mssql",
+                "label": {
+                  "ja_JP": "Microsoft SQL Server",
+                  "en_US": "Microsoft SQL Server",
+                  "pt_BR": "Microsoft SQL Server",
+                  "zh_Hans": "Microsoft SQL Server"
+                },
+                "icon": ""
+              }
+            ],
+            "min": null,
+            "default": "mysql",
+            "auto_generate": null,
+            "required": true,
+            "input_schema": null,
+            "type": "select",
+            "max": null,
+            "precision": null
+          },
+          {
+            "llm_description": "",
+            "human_description": {
+              "ja_JP": "Database hostname or IP address (Original string, not URL-encoded string).",
+              "en_US": "Database hostname or IP address (Original string, not URL-encoded string).",
+              "pt_BR": "Database hostname or IP address (Original string, not URL-encoded string).",
+              "zh_Hans": "数据库的主机名或IP地址（原始字符串，非URL编码字符串）。"
+            },
+            "form": "llm",
+            "multiple": false,
+            "template": null,
+            "scope": null,
+            "name": "db_host",
+            "label": {
+              "ja_JP": "Database Host",
+              "en_US": "Database Host",
+              "pt_BR": "Database Host",
+              "zh_Hans": "数据库地址"
+            },
+            "placeholder": null,
+            "options": [],
+            "min": null,
+            "default": "localhost",
+            "auto_generate": null,
+            "required": true,
+            "input_schema": null,
+            "type": "string",
+            "max": null,
+            "precision": null
+          },
+          {
+            "llm_description": "",
+            "human_description": {
+              "ja_JP": "Database port.",
+              "en_US": "Database port.",
+              "pt_BR": "Database port.",
+              "zh_Hans": "数据库的端口。"
+            },
+            "form": "llm",
+            "multiple": false,
+            "template": null,
+            "scope": null,
+            "name": "db_port",
+            "label": {
+              "ja_JP": "Port",
+              "en_US": "Port",
+              "pt_BR": "Port",
+              "zh_Hans": "端口"
+            },
+            "placeholder": null,
+            "options": [],
+            "min": null,
+            "default": null,
+            "auto_generate": null,
+            "required": false,
+            "input_schema": null,
+            "type": "number",
+            "max": null,
+            "precision": null
+          },
+          {
+            "llm_description": "",
+            "human_description": {
+              "ja_JP": "Database username (Original string, not URL-encoded string).",
+              "en_US": "Database username (Original string, not URL-encoded string).",
+              "pt_BR": "Database username (Original string, not URL-encoded string).",
+              "zh_Hans": "数据库的用户名（原始字符串，非URL编码字符串）。"
+            },
+            "form": "llm",
+            "multiple": false,
+            "template": null,
+            "scope": null,
+            "name": "db_username",
+            "label": {
+              "ja_JP": "Username",
+              "en_US": "Username",
+              "pt_BR": "Username",
+              "zh_Hans": "用户名"
+            },
+            "placeholder": null,
+            "options": [],
+            "min": null,
+            "default": null,
+            "auto_generate": null,
+            "required": true,
+            "input_schema": null,
+            "type": "string",
+            "max": null,
+            "precision": null
+          },
+          {
+            "llm_description": "",
+            "human_description": {
+              "ja_JP": "Database password (Original string, not URL-encoded string).",
+              "en_US": "Database password (Original string, not URL-encoded string).",
+              "pt_BR": "Database password (Original string, not URL-encoded string).",
+              "zh_Hans": "数据库的密码（原始字符串，非URL编码字符串）。"
+            },
+            "form": "llm",
+            "multiple": false,
+            "template": null,
+            "scope": null,
+            "name": "db_password",
+            "label": {
+              "ja_JP": "Password",
+              "en_US": "Password",
+              "pt_BR": "Password",
+              "zh_Hans": "密码"
+            },
+            "placeholder": null,
+            "options": [],
+            "min": null,
+            "default": null,
+            "auto_generate": null,
+            "required": true,
+            "input_schema": null,
+            "type": "secret-input",
+            "max": null,
+            "precision": null
+          },
+          {
+            "llm_description": "",
+            "human_description": {
+              "ja_JP": "Database name (Original string, not URL-encoded string).",
+              "en_US": "Database name (Original string, not URL-encoded string).",
+              "pt_BR": "Database name (Original string, not URL-encoded string).",
+              "zh_Hans": "数据库的名称（原始字符串，非URL编码字符串）。"
+            },
+            "form": "llm",
+            "multiple": false,
+            "template": null,
+            "scope": null,
+            "name": "db_name",
+            "label": {
+              "ja_JP": "Database name",
+              "en_US": "Database name",
+              "pt_BR": "Database name",
+              "zh_Hans": "库名"
+            },
+            "placeholder": null,
+            "options": [],
+            "min": null,
+            "default": null,
+            "auto_generate": null,
+            "required": false,
+            "input_schema": null,
+            "type": "string",
+            "max": null,
+            "precision": null
+          },
+          {
+            "llm_description": "",
+            "human_description": {
+              "ja_JP": "Database properties, for example: alt_host=host1&alt_host=host2&ssl_cipher=%2Fpath%2Fto%2Fcrt",
+              "en_US": "Database properties, for example: alt_host=host1&alt_host=host2&ssl_cipher=%2Fpath%2Fto%2Fcrt",
+              "pt_BR": "Database properties, for example: alt_host=host1&alt_host=host2&ssl_cipher=%2Fpath%2Fto%2Fcrt",
+              "zh_Hans": "数据库属性，例如：alt_host=host1&alt_host=host2&ssl_cipher=%2Fpath%2Fto%2Fcrt"
+            },
+            "form": "llm",
+            "multiple": false,
+            "template": null,
+            "scope": null,
+            "name": "db_properties",
+            "label": {
+              "ja_JP": "Database properties",
+              "en_US": "Database properties",
+              "pt_BR": "Database properties",
+              "zh_Hans": "数据库属性"
+            },
+            "placeholder": null,
+            "options": [],
+            "min": null,
+            "default": null,
+            "auto_generate": null,
+            "required": false,
+            "input_schema": null,
+            "type": "string",
+            "max": null,
+            "precision": null
+          },
+          {
+            "llm_description": "SQL query statement, for example: select * from tbl_name",
+            "human_description": {
+              "ja_JP": "SQL query statement, for example: select * from tbl_name",
+              "en_US": "SQL query statement, for example: select * from tbl_name",
+              "pt_BR": "SQL query statement, for example: select * from tbl_name",
+              "zh_Hans": "SQL查询语句，例如：select * from tbl_name"
+            },
+            "form": "llm",
+            "multiple": false,
+            "template": null,
+            "scope": null,
+            "name": "query_sql",
+            "label": {
+              "ja_JP": "Query SQL",
+              "en_US": "Query SQL",
+              "pt_BR": "Query SQL",
+              "zh_Hans": "SQL查询语句"
+            },
+            "placeholder": null,
+            "options": [],
+            "min": null,
+            "default": null,
+            "auto_generate": null,
+            "required": true,
+            "input_schema": null,
+            "type": "string",
+            "max": null,
+            "precision": null
+          },
+          {
+            "llm_description": "",
+            "human_description": {
+              "ja_JP": "Used for selecting the output format, markdown or json.",
+              "en_US": "Used for selecting the output format, markdown or json.",
+              "pt_BR": "Used for selecting the output format, markdown or json.",
+              "zh_Hans": "用于选择输出格式，markdown或json。"
+            },
+            "form": "form",
+            "multiple": false,
+            "template": null,
+            "scope": null,
+            "name": "output_format",
+            "label": {
+              "ja_JP": "Output format",
+              "en_US": "Output format",
+              "pt_BR": "Output format",
+              "zh_Hans": "输出格式"
+            },
+            "placeholder": null,
+            "options": [
+              {
+                "value": "markdown",
+                "label": {
+                  "ja_JP": "MARKDOWN",
+                  "en_US": "MARKDOWN",
+                  "pt_BR": "MARKDOWN",
+                  "zh_Hans": "MARKDOWN"
+                },
+                "icon": ""
+              },
+              {
+                "value": "json",
+                "label": {
+                  "ja_JP": "JSON",
+                  "en_US": "JSON",
+                  "pt_BR": "JSON",
+                  "zh_Hans": "JSON"
+                },
+                "icon": ""
+              }
+            ],
+            "min": null,
+            "default": "markdown",
+            "auto_generate": null,
+            "required": true,
+            "input_schema": null,
+            "type": "select",
+            "max": null,
+            "precision": null
+          }
+        ],
+        "plugin_id": "junjiem/db_query",
+        "provider_icon_dark": null,
+        "title": "SQL Query",
+        "tool_label": "SQL Query",
+        "type": "tool",
+        "selected": false
+      },
+      "position": {
+        "y": 393.78920894452824,
+        "x": -89.96059568893656
+      },
+      "type": "custom",
+      "height": 123,
+      "selected": false,
+      "width": 241
+    },
+    {
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "id": "1794397825028",
+      "positionAbsolute": {
+        "x": 573.424667055343,
+        "y": 442.37695074993945
+      },
+      "data": {
+        "prompt_template": [
+          {
+            "text": "你是一个专业的业务数据分析师。请解读系统提供的 MySQL 查询结果，并用大白话向用户汇报。\n# 待分析的数据\n{{#context#}}\n# 🚨 核心汇报规则\n## 1.先识别实际列名\n查询结果的表格列名是**动态的**，每次都不一样。可能是：\ncustomer_count、total_count、category_name、total_sales、product_name、total_sold，\n利润、customer_name、total_spent、bought_products 等等。\n**你必须先读取表格第一行（表头），确认实际有哪些列，再基于这些列解读。**\n绝对禁止假设列名，也不要因为\"没看到某个预期的列\"就判定数据为空。\n## 2.何时算\"没有数据\"\n只有这两种情况才回复\"数据库中暂无符合条件的数据\"：\n- 结果区域完全空白，连表头都没有\n- 只有表头、没有任何数据行\n只要出现了表头或者任何一个数值/文字，就说明有数据，必须正常解读。\n## 3.汇报格式\n### 📊 查询结果\n用 Markdown 表格原样展示查询到的数据（保留原始列名）。前5行仅做展示\n### 💡 核心发现\n用 1-3 条说明数据反映了什么。每条都要引用表格里的**真实数值**，例如：\n- \"电脑办公类销售额最高，为 42,377 元，占总额的 46%\"\n- \"深圳客户共 12 人，占全部客户的 60%\"\n不要空泛地说\"表现良好\"「数据亮眼」，要说具体是什么、多少。\n### 🚀 业务建议\n基于上述数据给 1-2 条具体可执行的建议。\n建议要与数据直接相关，不要给通用套话（如\"加强管理\"\"提升效率\"）。\n## 4.注意事项\n- 如果某个字段是 NULL 或者 0，如实说明，不要美化\n- 如果数据包含明显的异常（如某分类销售额为 0），指出来\n- 不要编造表格里没有的数字\n- 单位要准确：金额说\"元\"，数量说\"件/个/人\"",
+            "edition_type": "basic",
+            "role": "system",
+            "id": "8388c434-5143-4aa3-a4d1-6cb6b7e2746e"
+          },
+          {
+            "role": "user",
+            "text": "",
+            "id": "e7273fa7-7f72-4138-ad44-0a4e55724b9b"
+          }
+        ],
+        "context": {
+          "enabled": true,
+          "variable_selector": [
+            "1794397754827",
+            "text"
+          ]
+        },
+        "title": "LLM 2",
+        "model_selector": null,
+        "type": "llm",
+        "vision": {
+          "enabled": false
+        },
+        "model": {
+          "name": "qwen3.5:4b",
+          "provider": "langgenius/ollama/ollama",
+          "completion_params": {
+            "num_predict": 512,
+            "seed": 0,
+            "think": false,
+            "num_ctx": 4096,
+            "temperature": 0
+          },
+          "mode": "chat"
+        },
+        "selected": false
+      },
+      "position": {
+        "y": 442.37695074993945,
+        "x": 573.424667055343
+      },
+      "type": "custom",
+      "height": 87,
+      "selected": true,
+      "width": 241
+    },
+    {
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "id": "1794397881525",
+      "positionAbsolute": {
+        "x": 984.0747942860664,
+        "y": 117.18738844313528
+      },
+      "data": {
+        "type": "end",
+        "title": "Output",
+        "outputs": [
+          {
+            "variable": "ans",
+            "value_selector": [
+              "1794397825028",
+              "text"
+            ],
+            "value_type": "string"
+          },
+          {
+            "variable": "data",
+            "value_selector": [
+              "1794397754827",
+              "text"
+            ],
+            "value_type": "string"
+          }
+        ],
+        "selected": false
+      },
+      "position": {
+        "y": 117.18738844313528,
+        "x": 984.0747942860664
+      },
+      "type": "custom",
+      "height": 113,
+      "selected": true,
+      "width": 241
+    },
+    {
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "id": "1794551397370",
+      "positionAbsolute": {
+        "x": 331.1567049652905,
+        "y": 112.52328258438745
+      },
+      "data": {
+        "cases": [
+          {
+            "case_id": "true",
+            "logical_operator": "or",
+            "conditions": [
+              {
+                "varType": "string",
+                "variable_selector": [
+                  "1794723437393",
+                  "status"
+                ],
+                "comparison_operator": "contains",
+                "value": "error",
+                "id": "14fc5d64-c9e8-43e4-bd80-c00f0ac65776"
+              },
+              {
+                "varType": "string",
+                "variable_selector": [
+                  "1794723437393",
+                  "status"
+                ],
+                "comparison_operator": "contains",
+                "value": "empty",
+                "id": "13347c0b-c8a7-45a9-a258-fac9514ef960"
+              }
+            ]
+          }
+        ],
+        "title": "IF/ELSE 2",
+        "type": "if-else",
+        "selected": false
+      },
+      "position": {
+        "y": 112.52328258438745,
+        "x": 331.1567049652905
+      },
+      "type": "custom",
+      "height": 173,
+      "selected": true,
+      "width": 241
+    },
+    {
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "id": "1794551458691",
+      "positionAbsolute": {
+        "x": 675.4246658513118,
+        "y": -116.56307430688561
+      },
+      "data": {
+        "type": "end",
+        "title": "Output 3",
+        "outputs": [
+          {
+            "variable": "err_text",
+            "value_selector": [
+              "1794723437393",
+              "message"
+            ],
+            "value_type": "string"
+          }
+        ],
+        "selected": false
+      },
+      "position": {
+        "y": -116.56307430688561,
+        "x": 675.4246658513118
+      },
+      "type": "custom",
+      "height": 87,
+      "selected": true,
+      "width": 241
+    },
+    {
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "id": "1794720006207",
+      "positionAbsolute": {
+        "x": -566.9623610318544,
+        "y": 393.78920894452824
+      },
+      "data": {
+        "query_attachment_selector": [],
+        "query_variable_selector": [
+          "1794397461019",
+          "text"
+        ],
+        "retrieval_mode": "multiple",
+        "title": "Knowledge Retrieval",
+        "type": "knowledge-retrieval",
+        "multiple_retrieval_config": {
+          "top_k": 4,
+          "reranking_enable": false,
+          "reranking_model": null,
+          "weights": {
+            "weight_type": "customized",
+            "keyword_setting": {
+              "keyword_weight": 0.3
+            },
+            "vector_setting": {
+              "vector_weight": 0.7,
+              "embedding_provider_name": "langgenius/ollama/ollama",
+              "embedding_model_name": "bge-m3"
+            }
+          },
+          "score_threshold": null,
+          "reranking_mode": "weighted_score"
+        },
+        "dataset_ids": [
+          "1393556c-856c-4eb3-8942-1e3133db9931"
+        ],
+        "selected": false
+      },
+      "position": {
+        "y": 393.78920894452824,
+        "x": -566.9623610318544
+      },
+      "type": "custom",
+      "height": 89,
+      "selected": true,
+      "width": 241
+    },
+    {
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "id": "1794723437393",
+      "positionAbsolute": {
+        "x": -31.057471603599765,
+        "y": -58.063074483949
+      },
+      "data": {
+        "code": "def main(sql_text: str, sql_json: list) -> dict:\n    # 1. 判断是否报错\n    if \"SQL 执行失败\" in sql_text or \"error\" in sql_text.lower():\n        return {\"status\": \"error\", \"message\": \"SQL执行出错\"}\n    \n    # 2. 判断是否为空数据（因为空数据时 json 是 [] 或者 text 只有表头）\n    # 如果插件返回了 json 数组，直接判断长度\n    if isinstance(sql_json, list) and len(sql_json) == 0:\n        return {\"status\": \"empty\", \"message\": \"查无数据\"}\n    \n    # 如果只有表头，没有真实数据行（通过计算行数判断）\n    lines = [line for line in sql_text.split('\\n') if line.strip()]\n    # 如果只有两行（表头 + 分隔线 |---|），说明没数据\n    if len(lines) <= 2:\n         return {\"status\": \"empty\", \"message\": \"查无数据\"}\n\n    # 3. 一切正常\n    return {\"status\": \"success\", \"message\": \"正常\"}",
+        "code_language": "python3",
+        "title": "Code",
+        "outputs": {
+          "status": {
+            "type": "string",
+            "children": null
+          },
+          "message": {
+            "type": "string",
+            "children": null
+          }
+        },
+        "type": "code",
+        "variables": [
+          {
+            "variable": "sql_text",
+            "value_selector": [
+              "1794397754827",
+              "text"
+            ],
+            "value_type": "string"
+          },
+          {
+            "variable": "sql_json",
+            "value_selector": [
+              "1794397754827",
+              "json"
+            ],
+            "value_type": "array[object]"
+          }
+        ],
+        "selected": false
+      },
+      "position": {
+        "y": -58.063074483949,
+        "x": -31.057471603599765
+      },
+      "type": "custom",
+      "height": 51,
+      "selected": true,
+      "width": 241
+    }
+  ],
+  "edges": [
+    {
+      "zIndex": 0,
+      "sourceHandle": "source",
+      "id": "1794397461019-source-1794397495698-target",
+      "target": "1794397495698",
+      "type": "custom",
+      "targetHandle": "target",
+      "source": "1794397461019",
+      "data": {
+        "sourceType": "start",
+        "targetType": "llm",
+        "isInIteration": false,
+        "isInLoop": false,
+        "loop_id": null,
+        "iteration_id": null
+      },
+      "selected": false
+    },
+    {
+      "zIndex": 0,
+      "sourceHandle": "source",
+      "id": "1794397461019-source-1794720006207-target",
+      "target": "1794720006207",
+      "type": "custom",
+      "targetHandle": "target",
+      "source": "1794397461019",
+      "data": {
+        "sourceType": "start",
+        "targetType": "knowledge-retrieval",
+        "isInIteration": false,
+        "isInLoop": false,
+        "iteration_id": null,
+        "loop_id": null
+      },
+      "selected": false
+    },
+    {
+      "zIndex": 0,
+      "sourceHandle": "source",
+      "id": "1794397495698-source-1794397754827-target",
+      "target": "1794397754827",
+      "type": "custom",
+      "targetHandle": "target",
+      "source": "1794397495698",
+      "data": {
+        "sourceType": "llm",
+        "targetType": "tool",
+        "isInIteration": false,
+        "isInLoop": false,
+        "iteration_id": null,
+        "loop_id": null
+      },
+      "selected": false
+    },
+    {
+      "zIndex": 0,
+      "sourceHandle": "source",
+      "id": "1794397754827-source-1794723437393-target",
+      "target": "1794723437393",
+      "type": "custom",
+      "targetHandle": "target",
+      "source": "1794397754827",
+      "data": {
+        "sourceType": "tool",
+        "targetType": "code",
+        "isInIteration": null,
+        "isInLoop": false,
+        "iteration_id": null,
+        "loop_id": null
+      },
+      "selected": false
+    },
+    {
+      "zIndex": 0,
+      "sourceHandle": "source",
+      "id": "1794397825028-source-1794397881525-target",
+      "target": "1794397881525",
+      "type": "custom",
+      "targetHandle": "target",
+      "source": "1794397825028",
+      "data": {
+        "sourceType": "llm",
+        "targetType": "end",
+        "isInIteration": false,
+        "isInLoop": false,
+        "iteration_id": null,
+        "loop_id": null
+      },
+      "selected": false
+    },
+    {
+      "zIndex": 0,
+      "sourceHandle": "false",
+      "id": "1794551397370-false-1794397825028-target",
+      "target": "1794397825028",
+      "type": "custom",
+      "targetHandle": "target",
+      "source": "1794551397370",
+      "data": {
+        "sourceType": "if-else",
+        "targetType": "llm",
+        "isInIteration": false,
+        "isInLoop": false,
+        "iteration_id": null,
+        "loop_id": null
+      },
+      "selected": false
+    },
+    {
+      "zIndex": 0,
+      "sourceHandle": "true",
+      "id": "1794551397370-true-1794551458691-target",
+      "target": "1794551458691",
+      "type": "custom",
+      "targetHandle": "target",
+      "source": "1794551397370",
+      "data": {
+        "sourceType": "if-else",
+        "targetType": "end",
+        "isInIteration": false,
+        "isInLoop": false,
+        "iteration_id": null,
+        "loop_id": null
+      },
+      "selected": false
+    },
+    {
+      "zIndex": 0,
+      "sourceHandle": "source",
+      "id": "1794720006207-source-1794397495698-target",
+      "target": "1794397495698",
+      "type": "custom",
+      "targetHandle": "target",
+      "source": "1794720006207",
+      "data": {
+        "sourceType": "knowledge-retrieval",
+        "targetType": "llm",
+        "isInIteration": false,
+        "isInLoop": false,
+        "loop_id": null,
+        "iteration_id": null
+      },
+      "selected": false
+    },
+    {
+      "zIndex": 0,
+      "sourceHandle": "source",
+      "id": "1794723437393-source-1794551397370-target",
+      "target": "1794551397370",
+      "type": "custom",
+      "targetHandle": "target",
+      "source": "1794723437393",
+      "data": {
+        "sourceType": "code",
+        "targetType": "if-else",
+        "isInIteration": null,
+        "isInLoop": false,
+        "iteration_id": null,
+        "loop_id": null
+      }
+    }
+  ],
+  "viewport": {
+    "x": 33.21259633764072,
+    "y": 374.65630475330966,
+    "zoom": 0.5000000059021137
+  }
+}
