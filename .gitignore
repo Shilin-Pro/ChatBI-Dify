@@ -32,3 +32,6 @@ _commit_msg.txt
 # 演示服务日志
 _demo.log
 _demo.err
+
+# 个人材料（不公开）
+docs/简历素材.md
