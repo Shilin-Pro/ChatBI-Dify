@@ -306,13 +306,67 @@ python tests/eval_50.py
 
 ## 演示页面
 
-零依赖，只用 Python 标准库：
+零依赖，只用 Python 标准库，不用装 streamlit。
+
+**启动：**
 
 ```powershell
+cd src
 $env:DIFY_APP_KEY="app-xxxx"
-python src/demo_server.py
-# 打开 http://127.0.0.1:8600
+$env:DIFY_BASE_URL="http://localhost/v1"
+python demo_server.py
 ```
+
+看到这段就说明成功了：
+
+```
+================================================================
+ChatBI 演示页面
+================================================================
+  地址: http://127.0.0.1:8600
+  Dify: http://localhost/v1
+  按 Ctrl+C 停止
+================================================================
+```
+
+然后打开 **http://127.0.0.1:8600**
+
+### 常见问题
+
+**打开页面显示「无法连接」**
+
+服务没在运行。检查一下：
+
+```powershell
+Get-NetTCPConnection -LocalPort 8600 -State Listen
+```
+
+没有输出就是没启动。**注意：关掉那个命令行窗口，服务就停了**，要重新启动。
+
+**查询返回的结果和问题完全不相关**
+
+大概率是中文编码丢了。排查顺序：
+
+1. 直接用 Python 测 Dify（绕开 demo）：
+
+```python
+import json, urllib.request
+payload = json.dumps({
+    "inputs": {"text": "深圳有多少客户？"},
+    "response_mode": "blocking", "user": "test"
+}, ensure_ascii=False).encode("utf-8")
+req = urllib.request.Request("http://localhost/v1/workflows/run", data=payload,
+    headers={"Authorization": "Bearer app-xxxx",
+             "Content-Type": "application/json; charset=utf-8"}, method="POST")
+print(urllib.request.urlopen(req, timeout=400).read().decode()[:300])
+```
+
+2. 如果 Python 测试正常，说明是客户端问题。**PowerShell 的 `Invoke-RestMethod` 会用系统默认编码（GBK），中文会变成 `????`**，用 Python 或浏览器就没问题。
+
+**中文显示成问号**
+
+数据库连接字符串要带 `characterEncoding=utf8`，见上面第 3 步。
+
 
 ## 不足
 

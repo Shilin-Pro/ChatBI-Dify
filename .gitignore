@@ -28,3 +28,7 @@ Thumbs.db
 
 # 临时提交信息
 _commit_msg.txt
+
+# 演示服务日志
+_demo.log
+_demo.err
