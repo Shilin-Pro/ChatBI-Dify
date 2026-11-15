@@ -1,0 +1,263 @@
+{
+  "total": 20,
+  "recall_hit": 20,
+  "recall_rate": 1.0,
+  "mrr": 0.6958333333333333,
+  "details": [
+    {
+      "id": "A1",
+      "question": "一共有多少客户？",
+      "hit": true,
+      "rank": 1,
+      "table": "customers",
+      "n_recalled": 3,
+      "recalled_docs": [
+        "?",
+        "?",
+        "?"
+      ]
+    },
+    {
+      "id": "A2",
+      "question": "深圳有多少客户？",
+      "hit": true,
+      "rank": 1,
+      "table": "customers",
+      "n_recalled": 1,
+      "recalled_docs": [
+        "?"
+      ]
+    },
+    {
+      "id": "A3",
+      "question": "钻石会员有几个？",
+      "hit": true,
+      "rank": 1,
+      "table": "customers",
+      "n_recalled": 1,
+      "recalled_docs": [
+        "?"
+      ]
+    },
+    {
+      "id": "A4",
+      "question": "女性客户有多少个？",
+      "hit": true,
+      "rank": 1,
+      "table": "customers",
+      "n_recalled": 2,
+      "recalled_docs": [
+        "?",
+        "?"
+      ]
+    },
+    {
+      "id": "B1",
+      "question": "一共有几个一级分类？",
+      "hit": true,
+      "rank": 2,
+      "table": "categories",
+      "n_recalled": 2,
+      "recalled_docs": [
+        "?",
+        "?"
+      ]
+    },
+    {
+      "id": "B2",
+      "question": "手机通讯属于哪个一级分类？",
+      "hit": true,
+      "rank": 2,
+      "table": "categories",
+      "n_recalled": 3,
+      "recalled_docs": [
+        "?",
+        "?",
+        "?"
+      ]
+    },
+    {
+      "id": "B3",
+      "question": "电脑办公分类下有多少个商品？",
+      "hit": true,
+      "rank": 3,
+      "table": "categories",
+      "n_recalled": 3,
+      "recalled_docs": [
+        "?",
+        "?",
+        "?"
+      ]
+    },
+    {
+      "id": "B4",
+      "question": "女装分类的销售额是多少？",
+      "hit": true,
+      "rank": 1,
+      "table": "categories",
+      "n_recalled": 4,
+      "recalled_docs": [
+        "?",
+        "?",
+        "?",
+        "?"
+      ]
+    },
+    {
+      "id": "C1",
+      "question": "一共有多少个商品？",
+      "hit": true,
+      "rank": 2,
+      "table": "products",
+      "n_recalled": 3,
+      "recalled_docs": [
+        "?",
+        "?",
+        "?"
+      ]
+    },
+    {
+      "id": "C2",
+      "question": "库存最多的商品是哪个？",
+      "hit": true,
+      "rank": 1,
+      "table": "products",
+      "n_recalled": 2,
+      "recalled_docs": [
+        "?",
+        "?"
+      ]
+    },
+    {
+      "id": "C3",
+      "question": "MacBook Air 卖了多少件？",
+      "hit": true,
+      "rank": 2,
+      "table": "products",
+      "n_recalled": 5,
+      "recalled_docs": [
+        "?",
+        "?",
+        "?",
+        "?",
+        "?"
+      ]
+    },
+    {
+      "id": "C4",
+      "question": "哪个商品的毛利率最高？",
+      "hit": true,
+      "rank": 1,
+      "table": "products",
+      "n_recalled": 4,
+      "recalled_docs": [
+        "?",
+        "?",
+        "?",
+        "?"
+      ]
+    },
+    {
+      "id": "D1",
+      "question": "一共有多少笔订单？",
+      "hit": true,
+      "rank": 2,
+      "table": "orders",
+      "n_recalled": 3,
+      "recalled_docs": [
+        "?",
+        "?",
+        "?"
+      ]
+    },
+    {
+      "id": "D2",
+      "question": "已完成状态的订单有多少笔？",
+      "hit": true,
+      "rank": 4,
+      "table": "orders",
+      "n_recalled": 4,
+      "recalled_docs": [
+        "?",
+        "?",
+        "?",
+        "?"
+      ]
+    },
+    {
+      "id": "D3",
+      "question": "4月份有多少个订单？",
+      "hit": true,
+      "rank": 2,
+      "table": "orders",
+      "n_recalled": 3,
+      "recalled_docs": [
+        "?",
+        "?",
+        "?"
+      ]
+    },
+    {
+      "id": "D4",
+      "question": "6月份的销售额是多少？",
+      "hit": true,
+      "rank": 3,
+      "table": "orders",
+      "n_recalled": 4,
+      "recalled_docs": [
+        "?",
+        "?",
+        "?",
+        "?"
+      ]
+    },
+    {
+      "id": "E1",
+      "question": "消费最高的客户是谁？",
+      "hit": true,
+      "rank": 1,
+      "table": "customers",
+      "n_recalled": 1,
+      "recalled_docs": [
+        "?"
+      ]
+    },
+    {
+      "id": "E2",
+      "question": "数码电器类商品的销售额是多少？",
+      "hit": true,
+      "rank": 2,
+      "table": "categories",
+      "n_recalled": 4,
+      "recalled_docs": [
+        "?",
+        "?",
+        "?",
+        "?"
+      ]
+    },
+    {
+      "id": "E3",
+      "question": "深圳客户的消费总额是多少？",
+      "hit": true,
+      "rank": 1,
+      "table": "customers",
+      "n_recalled": 1,
+      "recalled_docs": [
+        "?"
+      ]
+    },
+    {
+      "id": "E4",
+      "question": "哪些商品从来没被卖出去过？",
+      "hit": true,
+      "rank": 2,
+      "table": "products",
+      "n_recalled": 2,
+      "recalled_docs": [
+        "?",
+        "?"
+      ]
+    }
+  ]
+}
