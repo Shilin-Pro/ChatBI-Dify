@@ -84,11 +84,20 @@ def _ask_once(question):
 
     d = body.get("data", {})
     o = d.get("outputs", {}) or {}
+
+    # Dify 工作流的输出字段名可能随版本变化，这里兼容多种命名
+    # V1/V2: ans / data / err_text
+    # V3:    ans1（正常解读）/ ans2（SQL错误）/ ans3（找不到实体）
+    answer = o.get("ans1") or o.get("ans") or ""
+    err_msg = o.get("ans2") or o.get("ans3") or o.get("err_text") or ""
+    data = o.get("data") or ""
+
     return {
         "status": d.get("status"),
-        "answer": o.get("ans", "") or "",
-        "data": o.get("data", "") or "",
-        "err_text": o.get("err_text", "") or "",
+        "answer": answer,
+        "data": data,
+        "err_text": err_msg,
+        "raw_outputs": o,
         "elapsed_ms": ms,
         "error": d.get("error"),
     }
@@ -352,6 +361,15 @@ function render(q, d) {
 btn.onclick = run;
 inp.addEventListener('keydown', e => { if (e.key === 'Enter') run(); });
 inp.focus();
+
+// 支持通过 URL 参数直接查询，方便分享和截图
+// 例如 http://127.0.0.1:8600/?q=6月份的销售额是多少？
+const params = new URLSearchParams(location.search);
+const presetQ = params.get('q');
+if (presetQ) {
+  inp.value = presetQ;
+  run();
+}
 </script>
 </body>
 </html>
@@ -363,7 +381,9 @@ class Handler(BaseHTTPRequestHandler):
         return
 
     def do_GET(self):
-        if self.path in ("/", "/index.html"):
+        # 忽略查询参数，/ 和 /index.html 都返回页面
+        path = self.path.split("?")[0]
+        if path in ("/", "/index.html"):
             html = HTML.replace("__EXAMPLES__", json.dumps(EXAMPLES, ensure_ascii=False))
             body = html.encode("utf-8")
             self.send_response(200)
